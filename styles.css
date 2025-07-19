@@ -1,90 +1,139 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #eaf3fb;
-  padding: 16px;
-  max-width: 500px;     /* Set a max-width but allow flexibility */
-  min-width: 300px;     /* Let popup be narrow too */
-  max-height: 90vh;     /* Limit to 90% of viewport height */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e1e2e 100%);
+  padding: 20px;
+  max-width: 500px;
+  min-width: 300px;
+  max-height: 90vh;
   font-size: 14px;
-  color: #0f172a;
-  border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
-  overflow: auto;       /* Enable scroll if content exceeds */
+  color: #f1f5f9;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  margin: 0;
+  backdrop-filter: blur(10px);
 }
 
-
-h2 {
-  font-size: 18px;
-  margin-bottom: 16px;
-  color: #003366; /* deep tech blue */
+header {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #60a5fa;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 button {
-  padding: 6px 14px;
-  margin-right: 8px;
-  margin-bottom: 10px;
-  background-color: #dbeafe; /* soft blue */
-  border: 1px solid #93c5fd; /* light blue border */
-  border-radius: 6px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #3b82f6, #60a5fa);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 13px;
-  color: #1e40af; /* strong blue */
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 button:hover {
-  background-color: #bfdbfe;
-  box-shadow: 0 2px 4px rgba(30, 64, 175, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 #output {
-  background-color: #f8fafc;
-  padding: 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
   max-height: 400px;
   overflow-y: auto;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Fira Code', 'Courier New', monospace;
   font-size: 13px;
-  white-space: pre-wrap;
-  color: #1e293b;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+  color: #e2e8f0;
+  line-height: 1.6;
+  backdrop-filter: blur(5px);
+}
+
+#output p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+#output strong {
+  font-weight: 700;
+  color: #93c5fd;
 }
 
 .copy-line {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 10px;
-  background-color: #eff6ff;
-  padding: 8px 10px;
-  border-radius: 5px;
-  border: 1px solid #dbeafe;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.copy-line:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(2px);
 }
 
 .copy-line code {
-  font-family: 'Courier New', monospace;
-  font-size: 13px;
-  color: #1e293b;
   flex: 1;
-  padding-right: 10px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 13px;
+  color: #e2e8f0;
 }
 
-.copy-btn {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  padding: 4px 10px;
+button.copy-btn {
+  background: linear-gradient(45deg, #10b981, #34d399);
+  padding: 6px 14px;
   font-size: 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
-.copy-btn:hover {
-  background-color: #1d4ed8;
-  transform: scale(1.05);
+button.copy-btn:hover {
+  background: linear-gradient(45deg, #059669, #22c55e);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+button.copy-btn.copied {
+  background: linear-gradient(45deg, #047857, #059669);
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+button.copy-btn.copied:hover {
+  background: linear-gradient(45deg, #047857, #059669);
 }
